@@ -14,14 +14,12 @@ import ReactApexChart from 'react-apexcharts';
 
 
 const ChartThree: React.FC = (props) => {
-
-
   const {fill,total} = props
 const options: ApexOptions = {
   chart: {
     type: 'donut',
   },
-  colors: ['#FFA70B', '#375E83'],
+  colors: [ '#375E83','#FFA70B'],
   labels: props.label,
   
   legend: {
@@ -40,11 +38,12 @@ const options: ApexOptions = {
           total: {
             showAlways: true,
             show: true,
-            label:`${fill} / ${total}`,
-            fontSize: '26px',
+            label:`${((fill/total) *100).toFixed(2)}%`,
+              fontSize: '26px',
+            fontWeight:600,
             formatter: (w) => {
               if (props.showFormatter) {
-                return `${w.config.series[1]} / ${w.config.series[1] + w.config.series[0]}`
+                return `${props.fill} / ${props.total} Person`
               }
               return ''
             }
@@ -92,7 +91,7 @@ const options: ApexOptions = {
         <div id="chartThree" className="mx-auto flex justify-center text-5xl rotateY180">
           <ReactApexChart
             options={options}
-            series={[props.total - props.fill,props.fill]}
+            series={[props.fill,props.total - props.fill]}
             
             type="donut"
           />
