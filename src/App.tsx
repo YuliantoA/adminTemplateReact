@@ -2,7 +2,6 @@ import {  Suspense,lazy, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
-import NotFound from './pages/Notfound';
 import Chart from './pages/Chart';
 import Loader from './common/Loader';
 import routes from './routes';
