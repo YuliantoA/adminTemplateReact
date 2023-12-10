@@ -40,7 +40,7 @@ const ChartThree = ({
               showAlways: true,
               show: true,
               label: `${fill} / ${total}`,
-              fontSize: '26px',
+              fontSize: '24px',
               formatter: (w) => {
                 if (showFormatter) {
                   return `${w.config.series[1]} / ${
@@ -68,10 +68,42 @@ const ChartThree = ({
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 1400,
+        options: {
+          chart: {
+            width: 280,
+          },
+        },
+      },
+      {
+        breakpoint: 1280,
+        options: {
+          chart: {
+            width: 240,
+          },
+        },
+      },
+      {
+        breakpoint: 1024,
         options: {
           chart: {
             width: 200,
+          },
+        },
+      },
+      {
+        breakpoint: 768,
+        options: {
+          chart: {
+            width: 150,
+          },
+        },
+      },
+      {
+        breakpoint: 640,
+        options: {
+          chart: {
+            width: 100,
           },
         },
       },
