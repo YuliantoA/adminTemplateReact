@@ -28,15 +28,7 @@ ChartJS.register(
   BarController,
   ChartjsPluginStacked100,
 );
-{
-  /* <ChartFour
-  data={value}
-  title={key}
-  separatorBar={key === 'Attendance Daily' ? 3 : 4}
-  stepSize={key === 'Attendance Daily' ? 25 : 8}
-  grid={key === 'Attendance Daily' ? false : true}
-/>; */
-}
+
 interface ChartFourProps {
   data: any[];
   title: String;
@@ -62,9 +54,8 @@ const ChartFour = ({
         position: 'bottom',
       },
       stacked100: {
-        // stacked chart plugin
-        enable: true, // enable or disable the stacked chart
-        replaceTooltipLabel: false, // set to false to disable override of the tooltip values
+        enable: true,
+        replaceTooltipLabel: false,
         axisId: 'y',
       },
       title: {
@@ -93,7 +84,6 @@ const ChartFour = ({
         stacked: false,
         ticks: {
           color: 'red',
-          // forces step size to be 50 units
           stepSize: stepSize,
         },
         title: {
@@ -123,7 +113,6 @@ const ChartFour = ({
         },
         ticks: {
           color: 'red',
-          // forces step size to be 50 units
           stepSize: 20,
         },
         position: 'left' as const,
@@ -175,6 +164,7 @@ const ChartFour = ({
   const yAxis = Array();
   const series = Array();
 
+  // parsing json data
   let i = 0;
   Object.keys(data).map((value: any) => {
     let objTemp = {};
@@ -209,9 +199,16 @@ const ChartFour = ({
     yAxis.length = 0;
     i++;
   });
+  function splitWord(str: String) {
+    let ind = str.indexOf(' ', Math.floor(str.length / 2) - 1);
+    ind = ind > 0 ? ind : str.lastIndexOf(' ');
+    return [str.substr(0, ind), str.substr(ind)];
+  }
+  // parsing json for label xaxis
   Object.keys(data[Object.keys(data)[0]]).map((x: any) =>
-    labels.push(title === 'Attendance Daily' ? x : x.split('-')),
+    labels.push(title === 'Attendance Daily' ? x : splitWord(x)),
   );
+
   const chartData = {
     labels,
     datasets: series.toReversed(),
