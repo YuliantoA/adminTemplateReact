@@ -44,7 +44,7 @@ const ChartAttend = ({
               fontWeight: 600,
               formatter: (w) => {
                 if (showFormatter) {
-                  return `${fill} / ${total} Person`;
+                  return `${fill}/${total} Person`;
                 }
                 return '';
               },
@@ -64,6 +64,17 @@ const ChartAttend = ({
           chart: {
             width: 310,
           },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '24px',
+                  },
+                },
+              },
+            },
+          },
         },
       },
       {
@@ -71,6 +82,17 @@ const ChartAttend = ({
         options: {
           chart: {
             width: 280,
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '24px',
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -80,6 +102,17 @@ const ChartAttend = ({
           chart: {
             width: 240,
           },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '24px',
+                  },
+                },
+              },
+            },
+          },
         },
       },
       {
@@ -87,6 +120,17 @@ const ChartAttend = ({
         options: {
           chart: {
             width: 200,
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '18px',
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -96,13 +140,35 @@ const ChartAttend = ({
           chart: {
             width: 150,
           },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '10px',
+                  },
+                },
+              },
+            },
+          },
         },
       },
       {
         breakpoint: 640,
         options: {
           chart: {
-            width: 100,
+            width: 140,
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '10px',
+                  },
+                },
+              },
+            },
           },
         },
       },

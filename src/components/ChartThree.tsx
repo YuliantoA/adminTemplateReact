@@ -65,6 +65,17 @@ const ChartThree = ({
           chart: {
             width: 310,
           },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '24px',
+                  },
+                },
+              },
+            },
+          },
         },
       },
       {
@@ -72,6 +83,17 @@ const ChartThree = ({
         options: {
           chart: {
             width: 280,
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '24px',
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -81,6 +103,17 @@ const ChartThree = ({
           chart: {
             width: 240,
           },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '24px',
+                  },
+                },
+              },
+            },
+          },
         },
       },
       {
@@ -88,6 +121,17 @@ const ChartThree = ({
         options: {
           chart: {
             width: 200,
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '18px',
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -97,13 +141,35 @@ const ChartThree = ({
           chart: {
             width: 150,
           },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '10px',
+                  },
+                },
+              },
+            },
+          },
         },
       },
       {
         breakpoint: 640,
         options: {
           chart: {
-            width: 100,
+            width: 140,
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  total: {
+                    fontSize: '10px',
+                  },
+                },
+              },
+            },
           },
         },
       },
