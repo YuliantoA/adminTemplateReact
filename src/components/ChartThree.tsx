@@ -11,89 +11,89 @@ import ReactApexChart from 'react-apexcharts';
 //   label:String[]
 // }
 
-
-
 const ChartThree: React.FC = (props) => {
+  const { fill, total } = props;
+  const options: ApexOptions = {
+    chart: {
+      type: 'donut',
+    },
+    colors: ['#FFA70B', '#375E83'],
+    labels: props.label,
 
+    legend: {
+      show: false,
+      position: 'bottom',
+    },
 
-  const {fill,total} = props
-const options: ApexOptions = {
-  chart: {
-    type: 'donut',
-  },
-  colors: ['#FFA70B', '#375E83'],
-  labels: props.label,
-  
-  legend: {
-    show: false,
-    position: 'bottom',
-  },
-
-  plotOptions: {
-    pie: {
-      expandOnClick: false,
-      donut: {
-        size: '65%',
-        labels: {
-          show: true,
-          
-          total: {
-            showAlways: true,
+    plotOptions: {
+      pie: {
+        expandOnClick: false,
+        donut: {
+          size: '65%',
+          labels: {
             show: true,
-            label:`${fill} / ${total}`,
-            fontSize: '26px',
-            formatter: (w) => {
-              if (props.showFormatter) {
-                return `${w.config.series[1]} / ${w.config.series[1] + w.config.series[0]}`
-              }
-              return ''
-            }
-          }
-        },
-        background: 'transparent',
-      },
-    },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  responsive: [
-    {
-      breakpoint: 2600,
-      options: {
-        chart: {
-          width: 310,
+
+            total: {
+              showAlways: true,
+              show: true,
+              label: `${fill} / ${total}`,
+              fontSize: '26px',
+              formatter: (w) => {
+                if (props.showFormatter) {
+                  return `${w.config.series[1]} / ${
+                    w.config.series[1] + w.config.series[0]
+                  }`;
+                }
+                return '';
+              },
+            },
+          },
+          background: 'transparent',
         },
       },
     },
-    {
-      breakpoint: 640,
-      options: {
-        chart: {
-          width: 200,
+    dataLabels: {
+      enabled: false,
+    },
+    responsive: [
+      {
+        breakpoint: 2600,
+        options: {
+          chart: {
+            width: 310,
+          },
         },
       },
-    },
-  ],
-};
+      {
+        breakpoint: 640,
+        options: {
+          chart: {
+            width: 200,
+          },
+        },
+      },
+    ],
+  };
 
   return (
     <div className="col-span-12 h-80 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-5">
       <div className="mb-3 justify-between gap-4 sm:flex">
         <div>
           <h5 className="text-md font-semibold text-black dark:text-white">
-            <span className="text-meta-1"> Today </span>{props.title}
+            <span className="text-meta-1"> Today </span>
+            {props.title}
           </h5>
         </div>
-
       </div>
 
       <div className="mb-2">
-        <div id="chartThree" className="mx-auto flex justify-center text-5xl rotateY180">
+        <div
+          id="chartThree"
+          className="mx-auto flex justify-center text-5xl rotateY180"
+        >
           <ReactApexChart
             options={options}
-            series={[props.total - props.fill,props.fill]}
-            
+            series={[props.total - props.fill, props.fill]}
             type="donut"
           />
         </div>

@@ -1,4 +1,4 @@
-import {  Suspense,lazy, useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
@@ -26,10 +26,9 @@ function App() {
       />
       <Routes>
         <Route element={<DefaultLayout />}>
-            <Route index element={<Chart />} />
-            {/* <Route index element={<NotFound />} /> */}
-            {routes.map((routes, index) => {
-
+          <Route index element={<Chart />} />
+          {/* <Route index element={<NotFound />} /> */}
+          {routes.map((routes, index) => {
             const { path, component: Component } = routes;
             return (
               <Route
