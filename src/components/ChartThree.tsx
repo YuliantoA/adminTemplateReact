@@ -32,7 +32,7 @@ const ChartThree = ({
       pie: {
         expandOnClick: false,
         donut: {
-          size: '65%',
+          size: '75%',
           labels: {
             show: true,
 
