@@ -28,8 +28,30 @@ ChartJS.register(
   BarController,
   ChartjsPluginStacked100,
 );
+{
+  /* <ChartFour
+  data={value}
+  title={key}
+  separatorBar={key === 'Attendance Daily' ? 3 : 4}
+  stepSize={key === 'Attendance Daily' ? 25 : 8}
+  grid={key === 'Attendance Daily' ? false : true}
+/>; */
+}
+interface ChartFourProps {
+  data: any[];
+  title: String;
+  separatorBar: number;
+  stepSize: number;
+  grid: boolean;
+}
 
-const ChartFour: React.FC = (props) => {
+const ChartFour = ({
+  data,
+  title,
+  separatorBar,
+  stepSize,
+  grid,
+}: ChartFourProps) => {
   const options = {
     plugins: {
       legend: {
@@ -55,7 +77,7 @@ const ChartFour: React.FC = (props) => {
     scales: {
       x: {
         border: {
-          display: props.grid,
+          display: grid,
         },
         stacked: true,
         grid: {
@@ -72,7 +94,7 @@ const ChartFour: React.FC = (props) => {
         ticks: {
           color: 'red',
           // forces step size to be 50 units
-          stepSize: props.stepSize,
+          stepSize: stepSize,
         },
         title: {
           display: true,
@@ -87,7 +109,7 @@ const ChartFour: React.FC = (props) => {
           padding: { top: 20, left: 0, right: 0, bottom: 0 },
         },
         grid: {
-          drawOnChartArea: props.grid,
+          drawOnChartArea: grid,
         },
       },
       y: {
@@ -125,7 +147,7 @@ const ChartFour: React.FC = (props) => {
   };
 
   const colors =
-    props.title === 'Attendance Daily'
+    title === 'Attendance Daily'
       ? [
           '#4f81af',
           '#ffbc79',
@@ -154,10 +176,10 @@ const ChartFour: React.FC = (props) => {
   const series = Array();
 
   let i = 0;
-  Object.keys(props.data).map((value) => {
+  Object.keys(data).map((value: any) => {
     let objTemp = {};
-    Object.values(props.data[value]).map((x) => yAxis.push(x));
-    if (i < props.separatorBar) {
+    Object.values(data[value]).map((x) => yAxis.push(x));
+    if (i < separatorBar) {
       objTemp = {
         label: value,
         data: [...yAxis],
@@ -178,7 +200,7 @@ const ChartFour: React.FC = (props) => {
         fill: true,
         yAxisID: 'y1',
         pointRadius: 6,
-        pointStyle: linePointStyle[i - props.separatorBar],
+        pointStyle: linePointStyle[i - separatorBar],
         lineTension: 0.5,
         pointHoverRadius: 5,
       };
@@ -187,8 +209,8 @@ const ChartFour: React.FC = (props) => {
     yAxis.length = 0;
     i++;
   });
-  Object.keys(props.data[Object.keys(props.data)[0]]).map((x) =>
-    labels.push(props.title === 'Attendance Daily' ? x : x.split('-')),
+  Object.keys(data[Object.keys(data)[0]]).map((x: any) =>
+    labels.push(title === 'Attendance Daily' ? x : x.split('-')),
   );
   const chartData = {
     labels,
@@ -199,7 +221,7 @@ const ChartFour: React.FC = (props) => {
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5">
       <div>
         <h3 className="text-xl font-semibold text-black dark:text-white">
-          {props.title}
+          {title}
         </h3>
       </div>
 

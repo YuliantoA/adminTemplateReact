@@ -1,12 +1,9 @@
 import ChartFour from '../components/ChartFour';
-import ChartBarStack from '../components/ChartBarStack';
-import { ChartTest } from '../components/ChartTest';
-import ChartTest2 from '../components/ChartTest2';
 import ChartThree from '../components/ChartThree.tsx';
 import ChartAttend from '../components/ChartAttend.tsx';
 import ChartPlain from '../components/ChartPlain.tsx';
-import dataJSONLeft from '../../public/dummy chart interview 1.json';
-import dataJSONRight from '../../public/dummy chart interview 2.json';
+import dataJSONLeft from '../file/dummy chart interview 1.json';
+import dataJSONRight from '../file/dummy chart interview 2.json';
 
 const Chart = () => {
   return (
@@ -22,7 +19,7 @@ const Chart = () => {
                     <ChartThree
                       total={value.Total}
                       fill={value['On Duty']}
-                      show-formatter={false}
+                      showFormatter={false}
                       title={key?.split(' ').toSpliced(0, 1).join(' ')}
                       label={['Off Duty', 'On Duty']}
                     />
@@ -80,13 +77,6 @@ const Chart = () => {
                 </div>
               );
             })}
-
-            {/* <div className="col-span-12">
-          <ChartTest />
-        </div>
-        <div className="col-span-12">
-          <ChartTest2 />
-        </div> */}
           </div>
         </div>
       </div>

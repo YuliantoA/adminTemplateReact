@@ -1,24 +1,27 @@
 import { ApexOptions } from 'apexcharts';
-import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-// interface ChartThreeState {
-//   series: number[];
-//   fill: number;
-//   total: number;
-//   title: String;
-//   showFormatter: Boolean;
-//   label:String[]
-// }
+interface ChartAttendProps {
+  total: number;
+  fill: number;
+  showFormatter: Boolean;
+  title: String;
+  label: string[];
+}
 
-const ChartThree: React.FC = (props) => {
-  const { fill, total } = props;
+const ChartAttend = ({
+  total,
+  fill,
+  showFormatter,
+  title,
+  label,
+}: ChartAttendProps) => {
   const options: ApexOptions = {
     chart: {
       type: 'donut',
     },
     colors: ['#375E83', '#FFA70B'],
-    labels: props.label,
+    labels: label,
 
     legend: {
       show: false,
@@ -40,8 +43,8 @@ const ChartThree: React.FC = (props) => {
               fontSize: '26px',
               fontWeight: 600,
               formatter: (w) => {
-                if (props.showFormatter) {
-                  return `${props.fill} / ${props.total} Person`;
+                if (showFormatter) {
+                  return `${fill} / ${total} Person`;
                 }
                 return '';
               },
@@ -80,19 +83,19 @@ const ChartThree: React.FC = (props) => {
         <div>
           <h5 className="text-md font-semibold text-black dark:text-white">
             <span className="text-meta-1"> Today </span>
-            {props.title}
+            {title}
           </h5>
         </div>
       </div>
 
       <div className="mb-2">
         <div
-          id="chartThree"
+          id="ChartAttend"
           className="mx-auto flex justify-center text-5xl rotateY180"
         >
           <ReactApexChart
             options={options}
-            series={[props.fill, props.total - props.fill]}
+            series={[fill, total - fill]}
             type="donut"
           />
         </div>
@@ -101,4 +104,4 @@ const ChartThree: React.FC = (props) => {
   );
 };
 
-export default ChartThree;
+export default ChartAttend;

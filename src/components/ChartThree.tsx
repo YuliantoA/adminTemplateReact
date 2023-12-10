@@ -1,24 +1,27 @@
 import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-// interface ChartThreeState {
-//   series: number[];
-//   fill: number;
-//   total: number;
-//   title: String;
-//   showFormatter: Boolean;
-//   label:String[]
-// }
+interface ChartThreeProps {
+  total: number;
+  fill: number;
+  showFormatter: Boolean;
+  title: String;
+  label: string[];
+}
 
-const ChartThree: React.FC = (props) => {
-  const { fill, total } = props;
+const ChartThree = ({
+  total,
+  fill,
+  showFormatter,
+  title,
+  label,
+}: ChartThreeProps) => {
   const options: ApexOptions = {
     chart: {
       type: 'donut',
     },
     colors: ['#FFA70B', '#375E83'],
-    labels: props.label,
+    labels: label,
 
     legend: {
       show: false,
@@ -39,7 +42,7 @@ const ChartThree: React.FC = (props) => {
               label: `${fill} / ${total}`,
               fontSize: '26px',
               formatter: (w) => {
-                if (props.showFormatter) {
+                if (showFormatter) {
                   return `${w.config.series[1]} / ${
                     w.config.series[1] + w.config.series[0]
                   }`;
@@ -81,7 +84,7 @@ const ChartThree: React.FC = (props) => {
         <div>
           <h5 className="text-md font-semibold text-black dark:text-white">
             <span className="text-meta-1"> Today </span>
-            {props.title}
+            {title}
           </h5>
         </div>
       </div>
@@ -93,7 +96,7 @@ const ChartThree: React.FC = (props) => {
         >
           <ReactApexChart
             options={options}
-            series={[props.total - props.fill, props.fill]}
+            series={[total - fill, fill]}
             type="donut"
           />
         </div>
